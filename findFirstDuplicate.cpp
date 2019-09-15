@@ -11,24 +11,14 @@ int findFirstDuplicate(struct Node *head){
     int y, count=0;
     struct Node *p=NULL;
     while(head!=NULL){
-        if(v.find(head->data)== v.end()){
-            v.insert(pair<int,int>(head->data,1));
-        }
-        else{
-            count++;
-             y = v.at(head->data);
-             v.erase(head->data);
-             y++;
-             v.insert(pair<int,int>(head->data,y));
-        }
+        v[head->data]++;
         head=head->next;
     }
-    if(count==0)
-        return -1;
     for(it=v.begin();it!=v.end();it++){
         if(it->second>=2)
             return it->first;
     }
+    return -1;
 }
 int main(){
     int n,x;
