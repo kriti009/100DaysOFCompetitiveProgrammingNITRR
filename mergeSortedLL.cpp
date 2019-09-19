@@ -10,6 +10,12 @@ struct Node {
 };
 struct Node *mergeLL(struct Node* head1, struct Node *head2){
     struct Node *temp=NULL,*p,*q,*x;
+    if(head1==NULL && head2==NULL)
+        return NULL;
+    if(head1==NULL)
+        return head2;
+    if(head2==NULL)
+        return head1;
     while(head1!=NULL && head2!=NULL){
         if(head1->data > head2->data){
             p = head2;
